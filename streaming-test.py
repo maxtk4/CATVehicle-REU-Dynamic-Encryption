@@ -15,6 +15,8 @@ def find_new_objects(old_objects, new_objects, threshold):
     """
     This function takes in the objects from two consecutive runs and attempts to match them to sort out which bounding boxes
     are new and which have just moved slightly
+
+    Not really IOU, analyzes the sum of the differences in the four bounding coordinates based on a threshold for the total change
     """
     matches = []
     unmatched = []
