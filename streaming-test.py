@@ -56,7 +56,7 @@ while True:
     
     img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-    results = model.predict(img)
+    results = model.track(img)
 
 
     for r in results: #what does this do? Are there ever multiple results?
@@ -64,24 +64,28 @@ while True:
         annotator = Annotator(frame)
         boxes = r.boxes
 
-        new_objects = boxes
+        #new_objects = boxes
 
         #print("object classes detected: ")
         for box in boxes:
             
             b = box.xyxy[0]  # get box coordinates in (top, left, bottom, right) format
             c = box.cls[0].item() #get class labels
+            try:
+                i = box.id[0].item() #get object id
+            except:
+                continue
             #print(f'class number: {int(c)}; class name: {model.names[int(c)]}') #print out the class number and name of the object detected
 
             #actually annotate the image
-            annotator.box_label(b, model.names[int(c)])
+            annotator.box_label(b, model.names[int(c)] +"; id: " + str(i))
 
         #I love graceful error handling 
-        try:
-            #call the function to identify new objects
-            find_new_objects(current_objects, new_objects, threshold=50)
-        except:
-            continue
+        #try:
+        #    #call the function to identify new objects
+        #    find_new_objects(current_objects, new_objects, threshold=50)
+        #except:
+        #    continue
 
     frame = annotator.result() #get the result from the annotator
 
@@ -90,7 +94,7 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'): #quit when the 'q' key is pressed
         break
 
-    current_objects = new_objects
+    #current_objects = new_objects
 
 cap.release()
 cv2.destroyAllWindows()
