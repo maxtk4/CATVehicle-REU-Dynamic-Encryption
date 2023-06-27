@@ -56,7 +56,7 @@ while True:
     
     img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-    results = model.track(img)
+    results = model.track(img, tracker="bytetrack.yaml", persist=True)
 
 
     for r in results: #what does this do? Are there ever multiple results?
