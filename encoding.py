@@ -48,5 +48,7 @@ stream_a = create_data_stream(filea)
 stream_b = create_data_stream(fileb)
 
 
-print(f'Length of stream a {len(stream_a)}')
-print(f'Length of stream b {len(stream_b)}')
+print(f'Length of stream a: {len(stream_a)}')
+print(f'Length of stream b: {len(stream_b)}')
+print(f'Stream a: {stream_a}')
+print(f'Stream b: {stream_b}')
