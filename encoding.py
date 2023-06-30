@@ -1,5 +1,7 @@
 import csv
 
+from validate import validate
+
 filea = 'sample-data-a.csv'
 fileb = 'sample-data-b.csv'
 
@@ -52,3 +54,4 @@ print(f'Length of stream a: {len(stream_a)}')
 print(f'Length of stream b: {len(stream_b)}')
 print(f'Stream a: {stream_a}')
 print(f'Stream b: {stream_b}')
+print(f'Validation percentage: {validate(stream_a, stream_b)}')
