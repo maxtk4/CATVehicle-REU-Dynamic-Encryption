@@ -1,3 +1,9 @@
+import tqdm
+# This reads frames from source video and writes the processed frames to the output video
+from supervision.video.dataclasses import VideoInfo
+from supervision.video.sink import VideoSink
+from supervision.video.source import get_video_frames_generator
+
 from ultralytics import YOLO
 # pip install bytetracker
 # necessary to use counting
@@ -11,16 +17,8 @@ model = YOLO('yolov8n.pt')  # load an official detection model
 #model = YOLO('yolov8n-seg.pt')  # load an official segmentation model
 #model = YOLO('path/to/best.pt')  # load a custom model
 
-
-
 #Predict
 detections = model(frame)
-
-
-# This reads frames from source video and writes the processed frames to the output video
-from supervision.video.dataclasses import VideoInfo
-from supervision.video.sink import VideoSink
-from supervision.video.source import get_video_frames_generator
 
 video_info = VideoInfo.from_video_path(SOURCE_VIDEO_PATH)
 
