@@ -27,6 +27,20 @@ frame_generator = get_video_frames_generator('IMG_2022.mov')
 
 
 #tracking code
+from yolox.tracker.byte_tracker import BYTETracker, STrack
+from onemetric.cv.utils.iou import box_iou_batch
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class BYTETrackerArgs:
+    track_thresh: float = 0.25
+    track_buffer: int = 30
+    match_thresh: float = 0.8
+    aspect_ratio_thresh: float = 3.0
+    min_box_area: float = 1.0
+    mot20: bool = False
+
 from typing import List
 
 import numpy as np
@@ -68,6 +82,11 @@ def match_detections_with_tracks(
             tracker_ids[detection_index] = tracks[tracker_index].track_id
 
     return tracker_ids
+
+
+
+
+
 
 with VideoSink('./runs/supervision_test.mp4', video_info) as sink:
     for frame in tqdm.tqdm(frame_generator, total=video_info.total_frames):

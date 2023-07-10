@@ -330,3 +330,5 @@ ypy-websocket @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/
 zict @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_06f3lix4ji/croot/zict_1682698748419/work
 zipp @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_8cv5zqoqed/croot/zipp_1672387131277/work
 zope.interface @ file:///Users/ktietz/demo/mc3/conda-bld/zope.interface_1628962362010/work
+
+onnx==1.8.1
